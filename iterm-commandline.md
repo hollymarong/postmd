@@ -15,6 +15,7 @@ Command+R 清空命令行
 ## oh-my-zsh 插件
 在.zshrc文件中配置要加载的插件
 ```
+brew install autojump
 plugins=(git autojump)
 ```
 

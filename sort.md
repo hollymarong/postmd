@@ -11,14 +11,14 @@ tags: algorithm
 是指执行算法所需要的内存空间
 
 
-| 算法     | 时间复杂度             | 空间复杂度 | 稳定性 |
-| :----    | :----                  | :----      | :----- |
-| 冒泡排序 | O(n) O(n*n)            | O(1)       | 稳定   |
-| 选择排序 | O(n*n) O(n*n)          | O(1)       | 不稳定 |
-| 插入排序 | O(n) O(n*n)            | O(1)       | 稳定   |
-| 希尔排序 | O(n) O(n log^2 n)      | O(1)       | 不稳定 |
-| 归并排序 | O(n) O(n log n)        | O(1)       | 稳定   |
-| 快速排序 | O(n log n)  O(n log n) | O(n log n) | 不稳定 |
+| 算法     | 时间复杂度   | 空间复杂度 | 稳定性 |
+| :----    | :----        | :----      | :----- |
+| 冒泡排序 | O(n*n)       | O(1)       | 稳定   |
+| 选择排序 | O(n*n)       | O(1)       | 不稳定 |
+| 插入排序 | O(n*n)       | O(1)       | 稳定   |
+| 希尔排序 | O(nlog^2 n) | O(1)       | 不稳定 |
+| 归并排序 | O(nlogn)     | O(1)       | 稳定   |
+| 快速排序 | O(nlogn)     | O(n log n) | 不稳定 |
 
 ***
 
@@ -131,32 +131,32 @@ tags: algorithm
 * 固定间隔
 ```javascript
 (function(){
-var aa = [];
-var nums = 10;
-for(var i = 0; i< nums; i++){
-aa[i] = Math.floor(Math.random()* nums + 1);
-}
-function swap(arr, index1, index2){
-var tmp = arr[index1];
-arr[index1] = arr[index2];
-arr[index2]= tmp;
-}
-var gaps  = [5, 3,1];
-function shellSort(arr){
-var len = arr.length;
-for(var g = 0; g < gaps.length; g++){
-for(var outer = g; outer < len; outer++){
-for(var inner = outer; inner >= g && arr[inner] < arr[inner -g]; inner -= g){
-swap(arr, inner ,inner-g);
-}
-}
-}
-}
-var start  = new Date();
-console.log('排序前', aa);
-shellSort(aa);
-console.log('排序后', aa);
-console.log('希尔排序消耗时间: ', +new Date - start);
+  var aa = [];
+  var nums = 10;
+  for(var i = 0; i< nums; i++){
+    aa[i] = Math.floor(Math.random()* nums + 1);
+  }
+  function swap(arr, index1, index2){
+    var tmp = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2]= tmp;
+  }
+  var gaps  = [5, 3,1];
+  function shellSort(arr){
+    var len = arr.length;
+    for(var g = 0; g < gaps.length; g++){
+      for(var outer = g; outer < len; outer++){
+        for(var inner = outer; inner >= g && arr[inner] < arr[inner -g]; inner -= g){
+          swap(arr, inner ,inner-g);
+        }
+      }
+    }
+  }
+  var start  = new Date();
+  console.log('排序前', aa);
+  shellSort(aa);
+  console.log('排序后', aa);
+  console.log('希尔排序消耗时间: ', +new Date - start);
 })();
 
 ```
@@ -203,63 +203,63 @@ console.log('希尔排序消耗时间: ', +new Date - start);
 原理：将数据分解为一组只有一个元素的数组，然后通过创建一组左右子数组将他们慢慢排序合并。
 ```javascript
 (function(){
-var aa = [];
-var nums = 10;
-for(var i = 0; i< nums; i++){
-aa[i] = Math.floor(Math.random()* nums + 1);
-}
-function mergeSort(arr){
-var len = arr.length;
-if(len < 2) return;
-var step = 1;
-var left, right;
-while(step < len){
-left = 0;
-right = step;
-while(right + step <= len){
-mergeArrays(arr, left, left+step, right, right+step);
-left = right + step;
-right = left + step;
-}
-if(right < len){
-mergeArrays(arr, left, left+step, right, len);
-}
-step *= 2;
-}
-}
-function mergeArrays(arr, leftStart, leftStop, rightStart, rightStop){
-var leftArr = new Array(leftStop - leftStart + 1);
-var rightArr = new Array(rightStop - rightStart + 1);
-var k = leftStart;
-for(var i = 0; i < leftStop-leftStart; i++){
-leftArr[i] = arr[k];
-k++
-}
-k = rightStart;
-for(var i = 0; i < rightStop-rightStart; i++){
-rightArr[i] = arr[k];
-k++;
-}
-leftArr[leftArr.length -1] = Infinity;
-rightArr[rightArr.length - 1] = Infinity;
-var l = 0;
-var r = 0;
-for(var i = leftStart; i < rightStop;i++){
-if(leftArr[l] <= rightArr[r]){
-arr[i] = leftArr[l];
-l++
-}else {
-arr[i] = rightArr[r];
-r++;
-}
-}
-}
-// 归并排序
-var start  = new Date();
-console.log('排序前', aa);
-mergeSort(aa);
-console.log('排序后', aa);
-console.log('归并排序消耗时间: ', +new Date - start);
+  var aa = [];
+  var nums = 10;
+  for(var i = 0; i< nums; i++){
+    aa[i] = Math.floor(Math.random()* nums + 1);
+  }
+  function mergeSort(arr){
+    var len = arr.length;
+    if(len < 2) return;
+    var step = 1;
+    var left, right;
+    while(step < len){
+      left = 0;
+      right = step;
+      while(right + step <= len){
+        mergeArrays(arr, left, left+step, right, right+step);
+        left = right + step;
+        right = left + step;
+      }
+      if(right < len){
+        mergeArrays(arr, left, left+step, right, len);
+      }
+      step *= 2;
+    }
+  }
+  function mergeArrays(arr, leftStart, leftStop, rightStart, rightStop){
+    var leftArr = new Array(leftStop - leftStart + 1);
+    var rightArr = new Array(rightStop - rightStart + 1);
+    var k = leftStart;
+    for(var i = 0; i < leftStop-leftStart; i++){
+      leftArr[i] = arr[k];
+      k++
+    }
+    k = rightStart;
+    for(var i = 0; i < rightStop-rightStart; i++){
+      rightArr[i] = arr[k];
+      k++;
+    }
+    leftArr[leftArr.length -1] = Infinity;
+    rightArr[rightArr.length - 1] = Infinity;
+    var l = 0;
+    var r = 0;
+    for(var i = leftStart; i < rightStop;i++){
+      if(leftArr[l] <= rightArr[r]){
+        arr[i] = leftArr[l];
+        l++
+      }else {
+        arr[i] = rightArr[r];
+        r++;
+      }
+    }
+  }
+  // 归并排序
+  var start  = new Date();
+  console.log('排序前', aa);
+  mergeSort(aa);
+  console.log('排序后', aa);
+  console.log('归并排序消耗时间: ', +new Date - start);
 })();
 
 ```

@@ -281,5 +281,11 @@ yum remove git //卸载git
 ## 安装L2TP VPN
 wget https://git.io/vpnsetup-centos -O vpnsetup.sh && sudo sh vpnsetup.sh
 IPsec PSK: eRc...
+
+查看秘钥
+vi /etc/ipsec.secrets
+
 // 添加VPN账号
 /etc/ppp/chap-secrets
+
+https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#os-x
