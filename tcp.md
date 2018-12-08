@@ -18,7 +18,7 @@ TCP(Transmission Control Protocol 传输控制协议)面向连接的，可靠的
 第一次分手:主机1（可以是客户端，也可以是服务器端）,设置Sequence Number和Ackowledgment Number，向主机2发送一个FIN报文段；此时，主机1进入FIN_WAIT_1状态；这表示主机1没有数据要发送给主机2了；
 第二次分手:主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，同意你的关闭请求；
 第三次分手:主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；
-第四次分手:主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那么，主机1就可以关闭连接了。
+第四次分手:主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL(通常为2分钟)后依然没有收到回复，则证明Server端已正常关闭，那么，主机1就可以关闭连接了。
 
 ### 参考链接
 https://github.com/jawil/blog/issues/14
