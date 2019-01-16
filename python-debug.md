@@ -1,7 +1,7 @@
 ---
 title: python-debug
 date: 2018-01-15 16:29:58
-tags: Python debug
+tags: Python
 ---
 * pdb debug
 pdb是python自带的库，为python程序提供了交互式的代码调试库。

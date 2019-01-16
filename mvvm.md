@@ -45,6 +45,8 @@ txtNode.addEventListener('keyup', function (e) {
 ```
 
 2.数据劫持+发布订阅
+流程图如下：
+{% asset_image vue_processon.jpg  流程图 %}
 ```
 // html
     <div id="app" >
