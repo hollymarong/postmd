@@ -104,7 +104,6 @@ function Stack() {
       tmpQueue.enqueue(curQueue.dequeue());
     }
     return curQueue.dequeue();
-
   }
 }
 

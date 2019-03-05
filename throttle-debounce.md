@@ -17,7 +17,7 @@ function throttle(fn, delay) {
   return function() {
     const curTime = +new Date();
     if (curTime - startTime >= delay) {
-      fn.apply(this.arguments);
+      fn.apply(this, arguments);
       startTime = curTime;
     }
   };
@@ -39,7 +39,6 @@ function throttle(fn, wait) {
         time = null;
       }, wait);
     }
-
   }
 }
 ```

@@ -25,7 +25,7 @@ var combinationSum = function(candidates, target, n) {
   return solutions;
 };
 
-var result = combinationSum2([1,2,3,3,4,5,6,7,8,9], 6, 3)
+var result = combinationSum([1,2,3,4,5,6,7,8,9], 6, 2)
 console.log('result', result);
 
 ```
