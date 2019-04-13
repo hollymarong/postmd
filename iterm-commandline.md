@@ -14,10 +14,24 @@ Command+R 清空命令行
 
 ## oh-my-zsh 插件
 在.zshrc文件中配置要加载的插件
-```
+https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#node
 brew install autojump
-plugins=(git autojump)
+plugins=(git 
+         autojump 
+         tig
+         web-search
+         z
+         node
+         npm
+         yarn
+         zsh-syntax-highlighting
+         zsh-autosuggestions)
 ```
+
+### node 
+查看 node 文档
+node-docs v8
+
 
 ### autojump
 快速打开文件
@@ -31,3 +45,6 @@ plugins=(git autojump)
 j <目录名>
 j --stat 查看历史路径库
 ```
+
+### scrollline
+Preference/Profiles/Terminal/Scrollback line -> Unlimited scrollback

@@ -53,6 +53,10 @@ microtask queue中的所有callback处在同一个事件循环中，而macrotask
    }
   async  function async2() {
      console.log( 'async2');
+     await async3();
+  }
+  async function async3() {
+     console.log('async3')
   }
   console.log("script start");
   setTimeout(function () {
@@ -84,3 +88,56 @@ await表达式的作用和返回值
 await是一个让出线程的标志，await后面的函数会先执行一遍， 然后就会跳出整个async函数来执行后面的js代码
 等本轮事件循环执行完了之后，又会跳回到async函数中等待await
 后面表达式的返回值，如果返回值为非Promise则继续执行async函数后面的代码，否则将返回promise放入队列中
+
+
+
+```
+  async function async1() {
+      console.log("async1 start");
+      await  async2();
+      console.log("async1 end");
+   }
+  async  function async2() {
+     console.log( 'async2');
+     await async3();
+  }
+  async function async3() {
+     console.log('async3')
+     await callApi();
+     console.log('async3 end'); 
+  }
+const callApi = () => {
+return new Promise(function(resolve, reject){
+  resolve(2);
+}).then(result => console.log('async3 promise result', result))
+
+}
+  console.log("script start");
+  setTimeout(function () {
+      console.log("settimeout");
+  },0);
+  async1();
+  new Promise(function (resolve) {
+      console.log("promise1");
+      resolve();
+  }).then(function () {
+      console.log("promise2");
+  });
+  console.log('script end');
+
+```
+结果：
+```
+script start
+async1 start
+async2
+async3
+promise1
+script end
+async3 promise result 2
+promise2
+async3 end
+async1 end
+undefined
+settimeout
+```

@@ -12,6 +12,8 @@ tags: Emacs
 
 ## Magit
 - Magit is a full Git interface
+- SPC g s git status
+- SPC g b magit blame
 
 ## 快捷键
 - Ctrl-H t  Built in Tutorial
@@ -118,6 +120,9 @@ $./build.sh
 npm install -g eslint
 //配置文件~/.eslintrc
 //找到一个js文件，flycheck-verify-setup --> javascript-eslint --> 就会看到eslint打开了
+// 如果 eslint 提示disable，需要enable checkers
+Flycheck Mode is enabled. Use SPC u C-c ! x to enable disabled checkers.
+
 // M-x flycheck-mode就能看到错误提示
 ```
 - 使用项目中安装和配置的eslint
@@ -130,6 +135,13 @@ SPC e S(flycheck-set-checker-executable)--> javascript-eslint --> 项目下/node
 - M-x flycheck-verify-setup
 ```
 (add-hook 'js2-mode-hook 'flycheck-mode)
+```
+- stylelint 
+```
+// 如果使用全局的stylelint, 并配置~/.stylelintrc 
+npm install -g stylelint
+stylelint --print-config ./.stylelintrc
+
 ```
 
 
@@ -186,6 +198,10 @@ M-x aya-expand
 - C-c C-s 设置日程结束时间
 - C-c a-a 查看日程 
 - C-c C-c 退出 
+- C-c a 可以打开 Agenda 模式菜单并选择不同的可视方式（ r ）
+- 在Agent模式菜单中，在gtd上按tab会跳转到相应的todo上
+- 在Agent模式菜单中，在gtd上按shift+上下箭头，调整任务的重要级别
+- C-c l 自动抓取chrome中的url
 
 #### org-pomodoro
 - 时间管理工具
@@ -508,3 +524,6 @@ SPC f l === M-x find-file-at-point
 ### 编辑
 S s e: 编辑光标所在单词
 选中多行，M-x -> edit line: 编辑多行
+
+### JS
+https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Blang/javascript

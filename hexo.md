@@ -8,6 +8,7 @@ tags: blog
 ```
 hexo n (hexo new) [filename]
 ```
+
 * 部署到Github
 ``` 
 hexo g (hexo generate) # 生成

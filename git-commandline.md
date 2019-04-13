@@ -34,7 +34,7 @@ git last
     git checkout origin/andriod
 
 ## git  拉取远程分支到本地
-git checkout origin/remoteName -b localName
+git checkout -b localName origin/remoteName
 
 ## git 提交远程分支
     git push origin 远程分支的名字
@@ -55,7 +55,7 @@ git checkout -b test
 
 ## git 提交
     git add -A || git add -all
-    git commit -a -m 'first commit'
+    git commit -am 'first commit'
 ## git不上传空文件夹设置
 ```
 //方法1
@@ -128,6 +128,7 @@ git merge new-feature
 重做
 ```
 git reset --hard <commit id> //reset到指定的commit
+git reset --hard HEAD^ // 回退到上一个commit 
 ```
 
 ##  git log
@@ -147,6 +148,7 @@ git log -stat -1 //查看最近一次提交的文件增删数量
 git log --author marong02 // 查看提价者的日志
 git log --grep=test //通过提交说明信息包含test字段过滤提交日志
 git log --pretty=oneline // 将提交日志压缩到一行
+git show commitId // 展示某次commit的详情
 ```
 ## git stash
 ```
@@ -223,4 +225,31 @@ git rebase
 
 ### git grep "" 搜素内容
 
-### git commit --amend --date=now 修改日期
+### git commit 
+```
+git commit --amend --date=now 修改日期
+git commit --amend --no-edit 直接提交
+```
+
+### Tig 使用
+```
+
+tig r  // 查看分支详情
+
+
+tig log [filename] // 查看某个文件的log
+
+
+q // 退出某次view 
+
+tig --author=[name] // 查看author提交记录
+
+/[filter]  // 对view搜索
+
+Ctrl + c   // 退出对view的搜索
+
+tig 进入diff 之后
+e  //  对文件进行编辑
+
+
+```
