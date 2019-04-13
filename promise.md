@@ -61,7 +61,6 @@ function resolvePromise(Promise2, x, resolve, reject) {
       } else {
         resolve(then);
       }
-
     }catch(err) {
       if (called) return;
       called = true;
@@ -178,6 +177,7 @@ var p = new Promise(function(resolve, reject){
     resolve(200);
   }, 200);
 })
+
 p.then(function(result){
   console.log('success1', result);
   return new Promise(function(resolve, reject) {
